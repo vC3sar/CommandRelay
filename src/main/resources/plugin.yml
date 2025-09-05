@@ -1,0 +1,14 @@
+name: CommandRelay
+version: 1.0.0
+author: vC3sar_
+main: com.vcesar.commandrelay.CommandRelayPlugin
+api-version: 1.20
+commands:
+  cr:
+    description: Comando de administracion del plugin
+    usage: /cr <reload|info|tcpstatus>
+    permission: commandrelay.admin
+permissions:
+  commandrelay.admin:
+    description: Permite usar comandos de administracion del plugin
+    default: op
