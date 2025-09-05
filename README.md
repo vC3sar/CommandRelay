@@ -79,8 +79,9 @@ allowed_commands:
   - ban
 ```
 
+## 📡 Example TCP Sender (Node.js)
+
 ```
-📡 Example TCP Sender (Node.js)
 const net = require("net");
 
 const PLUGIN_HOST = "localhost"; // Server IP running the plugin
