@@ -25,18 +25,58 @@ It uses a **secret token**, an **IP whitelist**, and a list of **allowed command
 ## ⚙️ Configuration (`config.yml`)
 
 ```yaml
+#############################
+# plugin created by vC3sar_ #
+#############################
+
+# IMPORTANT! Do not share your secret_key with anyone.
+# Remember to restart the server after changing this configuration.
+# Use the /cr reload command to reload the configuration without restarting the server.
+
+# CR RELOAD DOES NOT RELOAD THE PLUGIN, ONLY THE CONFIGURATION.
+# IF YOU CHANGE THE PORT, YOU MUST RESTART THE SERVER.
+
+# Port where the plugin will listen for incoming connections.
+# Make sure this port is open in your server's firewall
+# and is not being used by another service.
 port: 8193
-secret_key: "my_secret_token"
+# Secret token to authenticate connections between the plugin and the external API
+# Change it to a secure value and keep it private
+secret_key: "mi_token_secreto"
+
+# You can define multiple allowed IPs in allowed_ips
+# Use "*" to allow all IPs (not recommended for security reasons)
+# Add the IP address from where your Node.js script will run
+# Example:
+# allowed_ips:
+#   - "105.123.100.12"
 allowed_ips:
   - "127.0.0.1"
-debug: false
+
+# retry_attempts y retry_delay manage the reconnection attempts if the connection is lost
+retry_attempts: 3
+retry_delay: 1000
+
+# You can enable debug mode to see more details in the server console
+debug: true
+
+# Messages for debug and user feedback
+messages:
+  activated: "CommandRelay activado."
+  invalid_token: "ERROR: token inválido."
+  command_executed: "Comando ejecutado correctamente."
+  debug_received: "DEBUG: Comando recibido -> "
+
+
+# Lista de comandos permitidos que pueden ser ejecutados desde la API externa
+# No incluyas el "/" al inicio del comando
+# permite solo los comandos que utilizaras para minimizar riesgos de seguridad
+# ningun comando que no este en esta lista sera ejecutado
 allowed_commands:
   - say
   - give
-messages:
-  activated: "Plugin activated"
-  invalid_token: "ERROR: invalid token"
-  command_executed: "Command executed successfully"
+  - kick
+  - ban
 ```
 
 ```
